@@ -1,0 +1,8 @@
+# IDE files
+.idea
+
+# DLLs, binary and modules
+__pycache__/
+
+# data and databases
+booktime/db.sqlite3
