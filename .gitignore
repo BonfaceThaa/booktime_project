@@ -6,3 +6,4 @@ __pycache__/
 
 # data and databases
 booktime/db.sqlite3
+booktime/.env
