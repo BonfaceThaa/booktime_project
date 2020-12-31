@@ -21,7 +21,7 @@ pipeline {
     }
     post {
         always {
-            echo 'docker-compose down'
+            sh 'docker-compose -f docker-compose.tests.yml down'
         }
     }
 }
