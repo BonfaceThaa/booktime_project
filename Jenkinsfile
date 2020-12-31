@@ -10,7 +10,10 @@ pipeline {
     stages {
         stage ("Docker build") {
             steps {
-                echo 'docker-compose build'
+                echo 'DJANGO_DEBUG = ${env.DJANGO_DEBUG}'
+                echo 'SECRET_KEY = ${env.SECRET_KEY}'
+                echo 'DJANGO_ALLOWED_HOSTS = ${env.DJANGO_ALLOWED_HOSTS}'
+                sh 'docker-compose build'
             }
         }
         stage ("Docker Run") {
