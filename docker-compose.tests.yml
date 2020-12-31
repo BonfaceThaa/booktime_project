@@ -1,0 +1,12 @@
+version: '3.7'
+
+services:
+  web:
+    build: .
+    command: python booktime/manage.py test main
+    ports:
+      - 8000:8000
+    environment:
+      - DJANGO_DEBUG
+      - SECRET_KEY
+      - DJANGO_ALLOWED_HOSTS

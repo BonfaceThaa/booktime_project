@@ -10,17 +10,12 @@ pipeline {
     stages {
         stage ("Docker build") {
             steps {
-                sh 'docker-compose build'
+                sh 'docker-compose -f docker-compose.tests.yml build'
             }
         }
-        stage ("Docker Run") {
+        stage ("Docker Run Tests") {
             steps {
-                sh 'docker-compose up'
-            }
-        }
-        stage ("Testing app") {
-            steps {
-                sh 'docker-compose exec web python booktime/manage.py test main'
+                sh 'docker-compose -f docker-compose.tests.yml up'
             }
         }
     }
