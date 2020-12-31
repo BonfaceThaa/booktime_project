@@ -3,16 +3,13 @@ pipeline {
     triggers { cron('*/5 * * * *') }
     options { timeout(time: 5) }
     environment {
-        DJANGO_DEBUG = '${env.DJANGO_DEBUG}'
-        SECRET_KEY    = '${env.SECRET_KEY}'
-        DJANGO_ALLOWED_HOSTS = '${env.DJANGO_ALLOWED_HOSTS}'
+        DJANGO_DEBUG = credentials('booktime-django-debug')
+        SECRET_KEY    = credentials('booktime-secret-key')
+        DJANGO_ALLOWED_HOSTS = credentials('booktime-allowed-host')
     }
     stages {
         stage ("Docker build") {
             steps {
-                echo 'DJANGO_DEBUG = ${env.DJANGO_DEBUG}'
-                echo 'SECRET_KEY = ${env.SECRET_KEY}'
-                echo 'DJANGO_ALLOWED_HOSTS = ${env.DJANGO_ALLOWED_HOSTS}'
                 sh 'docker-compose build'
             }
         }
