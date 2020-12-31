@@ -2,6 +2,11 @@ pipeline {
     agent any
     triggers { cron('*/5 * * * *') }
     options { timeout(time: 5) }
+    environment {
+        DJANGO_DEBUG = '${env.DJANGO_DEBUG}'
+        SECRET_KEY    = '${env.SECRET_KEY}'
+        DJANGO_ALLOWED_HOSTS = '${env.DJANGO_ALLOWED_HOSTS}'
+    }
     stages {
         stage ("Docker build") {
             steps {
