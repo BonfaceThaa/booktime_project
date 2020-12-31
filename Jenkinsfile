@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    triggers { cron('* * * * *') }
+    triggers { cron('*/5 * * * *') }
     options { timeout(time: 5) }
     stages {
         stage ("Docker build") {
@@ -13,11 +13,15 @@ pipeline {
                 sh 'docker-compose up'
             }
         }
+        stage ("Testing app") {
+            steps {
+                sh 'docker-compose exec web python booktime/manage.py test main'
+            }
+        }
     }
     post {
         always {
-            sleep 300
-            echo 'docker-compose build'
+            echo 'docker-compose down'
         }
     }
 }
