@@ -126,3 +126,11 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+EMAIL_BACKEND = os.environ.get("DJANGO_EMAIL_BACKEND")
+EMAIL_HOST = os.environ.get("DJANGO_EMAIL_HOST ")
+EMAIL_HOST_USER = os.environ.get("DJANGO_EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.environ.get("DJANGO_EMAIL_HOST_PASSWORD")
+EMAIL_PORT = os.environ.get("DJANGO_EMAIL_PORT")
+EMAIL_USE_TLS = os.environ.get("DJANGO_EMAIL_USE_TLS")
+DEFAULT_FROM_EMAIL = os.environ.get("DJANGO_DEFAULT_FROM_EMAIL")
