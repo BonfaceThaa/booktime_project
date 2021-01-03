@@ -1,6 +1,6 @@
 from django.test import TestCase
 from django.core import mail
-from booktime.main import forms
+from main import forms
 
 
 class TestForm(TestCase):
@@ -9,7 +9,7 @@ class TestForm(TestCase):
             'name': "Luke Skywalker",
             'message': "Hi there"})
         self.assertTrue(form.is_valid())
-        with self.assertLogs('booktime.main.forms', level='INFO') as cm:
+        with self.assertLogs('main.forms', level='INFO') as cm:
             form.send_mail()
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].subject, 'Site message')
