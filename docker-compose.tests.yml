@@ -3,7 +3,7 @@ version: '3.7'
 services:
   web:
     build: .
-    command: python booktime/manage.py test main
+    command: python booktime/manage.py test main.tests
     ports:
       - 8000:8000
     environment:
