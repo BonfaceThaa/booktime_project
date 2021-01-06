@@ -23,6 +23,12 @@ pipeline {
         always {
             sh 'docker-compose -f docker-compose.tests.yml down'
         }
+        success {
+             mattermostSend (
+                color: "good",
+                message: "Build SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link to build>)"
+                )
+        }
         failure {
             mattermostSend (
                 color: "danger",
