@@ -3,6 +3,7 @@ version: '3.7'
 services:
   web:
     build: .
+    image: localhost:5000/booktime:latest
     command: python booktime/manage.py test main.tests
     ports:
       - 8000:8000
