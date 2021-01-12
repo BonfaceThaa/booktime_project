@@ -10,3 +10,4 @@ booktime/.env
 
 # media files
 booktime/media
+booktime/main/fixtures
