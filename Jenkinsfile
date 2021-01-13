@@ -6,11 +6,17 @@ pipeline {
         DJANGO_DEBUG = credentials('booktime-django-debug')
         SECRET_KEY    = credentials('booktime-secret-key')
         DJANGO_ALLOWED_HOSTS = credentials('booktime-allowed-host')
+        REGISTRY_HOST = credentials('booktime-docker-registry')
     }
     stages {
         stage ("Build") {
             steps {
                 sh 'docker-compose -f docker-compose.tests.yml build'
+            }
+        }
+        stage ("Push Image") {
+            steps {
+                sh 'docker-compose -f docker-compose.tests.yml push'
             }
         }
         stage ("Unit Test") {

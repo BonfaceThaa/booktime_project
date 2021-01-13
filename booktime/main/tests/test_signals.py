@@ -27,6 +27,6 @@ class TestSignal(TestCase):
             "rb",
         ) as f:
             expected_content = f.read()
-            assert not image.thumbnail.read() == expected_content
+            assert image.thumbnail.read() == expected_content
         image.thumbnail.delete(save=False)
         image.image.delete(save=False)
