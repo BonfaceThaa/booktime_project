@@ -20,8 +20,13 @@ pipeline {
             }
         }
         stage ("Unit Test") {
-            steps {
+            try {
                 sh 'docker-compose -f docker-compose.tests.yml up'
+            } catch( Exception e ) {
+                mattermostSend (
+                color: "danger",
+                message: "Build FAILED: ${env.JOB_NAME} #${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link to build>)"
+                )
             }
         }
     }
@@ -33,12 +38,6 @@ pipeline {
              mattermostSend (
                 color: "good",
                 message: "Build SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link to build>)"
-                )
-        }
-        failure {
-            mattermostSend (
-                color: "danger",
-                message: "Build FAILED: ${env.JOB_NAME} #${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link to build>)"
                 )
         }
     }
