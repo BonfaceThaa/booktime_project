@@ -34,7 +34,6 @@ pipeline {
                 color: "good",
                 message: "Build SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link to build>)"
                 )
-             throw e
         }
         failure {
             mattermostSend (
