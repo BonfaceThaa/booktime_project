@@ -20,16 +20,14 @@ node {
             }
         }
         stage ("Unit Test") {
-            script {
-                try {
+            try {
                     sh 'docker-compose -f docker-compose.tests.yml up'
-                } catch (err) {
+                } catch (exc) {
                     mattermostSend (
                     color: "danger",
                     message: "Build FAILED AT STAGE <UNIT TEST>: ${env.JOB_NAME} #${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link to build>)"
                     )
                 }
-            }
         }
     }
     post {
