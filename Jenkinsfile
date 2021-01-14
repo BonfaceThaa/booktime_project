@@ -1,4 +1,4 @@
-node {
+pipeline {
     agent any
     triggers { cron('*/5 * * * *') }
     options { timeout(time: 5) }
