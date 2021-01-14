@@ -1,3 +1,5 @@
+#!/usr/bin/env groovy
+
 node {
     agent any
     triggers { cron('*/5 * * * *') }
@@ -8,8 +10,7 @@ node {
         DJANGO_ALLOWED_HOSTS = credentials('booktime-allowed-host')
         REGISTRY_HOST = credentials('booktime-docker-registry')
     }
-    stages {
-        stage ("Build") {
+    stage ("Build") {
             steps {
                 sh 'docker-compose -f docker-compose.tests.yml build'
             }
@@ -20,11 +21,13 @@ node {
             }
         }
         stage ("Unit Test") {
-            steps {
+            try {
                 sh 'docker-compose -f docker-compose.tests.yml up'
             }
+            catch (err) {
+                throw err
+            }
         }
-    }
     post {
         always {
             sh 'docker-compose -f docker-compose.tests.yml down'
