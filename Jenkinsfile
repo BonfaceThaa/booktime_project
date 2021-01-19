@@ -13,7 +13,7 @@ node {
     }
     stage ("Unit Test") {
         try {
-            sh 'docker-compose -f docker-compose.tests.yml up'
+            sh 'docker-compose -f docker-compose.tests.yml up --exit-code-from web'
             } catch (err) {
                 mattermostSend (
                 color: "danger",
