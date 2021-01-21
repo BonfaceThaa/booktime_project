@@ -12,7 +12,7 @@ class TestImport(TestCase):
     def test_import_data(self):
         out = StringIO()
         args = ['booktime/main/fixtures/product-sample.csv',
-                'booktime/main/fixtures/product-sampleimages/']
+                'booktime/main/fixtures/product-sampleimages']
         call_command('import_data', *args, stdout=out)
         expected_out = ("Importing products\n"
                         "Products processed=3 (created=3)\n"

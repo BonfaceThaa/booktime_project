@@ -1,0 +1,32 @@
+[
+{
+  "model": "main.producttag",
+  "pk": 1,
+  "fields": {
+    "name": "new",
+    "slug": "new",
+    "description": "",
+    "active": true
+  }
+},
+{
+  "model": "main.producttag",
+  "pk": 2,
+  "fields": {
+    "name": "hot deal",
+    "slug": "hot-deal",
+    "description": "",
+    "active": true
+  }
+},
+{
+  "model": "main.producttag",
+  "pk": 3,
+  "fields": {
+    "name": "out of stock",
+    "slug": "out-stock",
+    "description": "",
+    "active": true
+  }
+}
+]
