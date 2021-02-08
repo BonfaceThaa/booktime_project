@@ -3,7 +3,6 @@ version: '3.7'
 services:
   web:
     build: .
-    image: ${REGISTRY_HOST}/booktime:v1.0.2
     command: python booktime/manage.py test main.tests
     ports:
       - 8000:8000
@@ -11,4 +10,3 @@ services:
       - DJANGO_DEBUG
       - SECRET_KEY
       - DJANGO_ALLOWED_HOSTS
-      - REGISTRY_HOST
