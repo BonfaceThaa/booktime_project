@@ -5,12 +5,15 @@ node {
         DJANGO_ALLOWED_HOSTS = credentials('booktime-allowed-host')
         REGISTRY_HOST = credentials('booktime-docker-registry')
     }
+
     stage ("Checkout") {
         checkout scm
         }
+
     stage ("Build") {
         sh 'docker-compose -f docker-compose.tests.yml build'
         }
+
     stage ("Unit Test") {
         try {
             sh 'docker-compose -f docker-compose.tests.yml up --exit-code-from web'
@@ -19,9 +22,11 @@ node {
                 throw err
             }
     }
+
     stage ("Push Image") {
         sh 'docker-compose -f docker-compose.tests.yml push'
     }
+
     notifySuccessful()
 }
 
