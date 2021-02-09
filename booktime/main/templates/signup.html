@@ -1,4 +1,4 @@
-{% extends"base.html" %}
+{% extends "base.html" %}
 {% block content %}
 <h2>Sign up</h2>
 <p>Please fill the form below.</p>
@@ -9,7 +9,7 @@
     <input
       type="email"
       class="form-control {% if form.email.errors %}
-      is-­invalid{% endif %}"
+      is-invalid{% endif %}"
       id="id_email"
       name="email"
       placeholder="Your email"
@@ -25,7 +25,7 @@
     <input
       type="password"
       class="form-control {% if form.password1.errors %}
-      is-­invalid{% endif %}"
+      is-invalid{% endif %}"
       id="id_password1"
       name="password1"
       value="{{ form.password1.value|default:'' }}">
@@ -40,7 +40,7 @@
     <input
       type="password"
       class="form-control{% if form.password2.errors %}
-      is-­invalid{% endif %}"
+      is-invalid{% endif %}"
       id="id_password2"
       name="password2"
       value="{{ form.password2.value|default:'' }}">
