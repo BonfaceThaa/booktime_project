@@ -2,5 +2,6 @@ version: '3.7'
 
 services:
   web:
+    image: ${REGISTRY_HOST}/booktime:latest
     build: .
     command: python booktime/manage.py test main.tests

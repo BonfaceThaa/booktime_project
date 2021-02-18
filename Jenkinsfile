@@ -11,12 +11,12 @@ node {
         }
 
     stage ("Build") {
-        sh 'docker-compose -f docker-compose.tests.yml build'
+        sh 'docker-compose -f docker-compose.yml -f docker-compose.tests.yml build'
         }
 
     stage ("Unit Test") {
         try {
-            sh 'docker-compose -f docker-compose.tests.yml up --exit-code-from web'
+            sh 'docker-compose -f docker-compose.yml -f docker-compose.tests.yml up --exit-code-from web'
             } catch (err) {
                 notifyFailure()
                 throw err
@@ -24,7 +24,7 @@ node {
     }
 
     stage ("Push Image") {
-        sh 'docker-compose -f docker-compose.tests.yml push'
+        sh 'docker-compose -f docker-compose.yml -f docker-compose.tests.yml push'
     }
 
     notifySuccessful()

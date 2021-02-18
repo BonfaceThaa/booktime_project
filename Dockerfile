@@ -1,8 +1,10 @@
 # pull official base image
 FROM python:3.8.3-alpine
 
+# create
 # set work directory
 WORKDIR /booktime_project
+RUN mkdir /booktime_project/staticfiles
 
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
